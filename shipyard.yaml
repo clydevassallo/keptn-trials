@@ -4,4 +4,7 @@ metadata:
   name: "shipyard-hello-port"
 spec:
   stages:
-    - name: "single-stage"
+    - name: "development"
+    - name: "test"
+    - name: "stage"
+    - name: "prod"
