@@ -5,6 +5,27 @@ metadata:
 spec:
   stages:
     - name: "development"
-    - name: "test"
+      sequences:
+        - name: "delivery"
+          tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: direct
+            - name: "test"
+              properties:
+                teststrategy: functional
+            - name: "release"
+    - name: "test"            
+      sequences:
+        - name: "delivery"
+          triggeredOn:
+            - event: "development.delivery.finished"
+              selector:
+                match:
+                  result: passed
+          tasks:
+            - name: "deployment"
+            - name: "test"
+            - name: "release"
     - name: "stage"
     - name: "prod"
