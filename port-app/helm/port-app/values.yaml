@@ -5,10 +5,7 @@ autoscaling:
   minReplicas: 1
   targetCPUUtilizationPercentage: 80
 fullnameOverride: ""
-image:
-  pullPolicy: IfNotPresent
-  repository: nginx
-  tag: ""
+image: nginx:alpine
 imagePullSecrets: []
 ingress:
   annotations: {}
